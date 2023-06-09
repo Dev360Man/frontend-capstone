@@ -1,0 +1,16 @@
+const productIdeas = [
+  {
+    title: "UX - Bot",
+    description:
+      "It provides step-by-step verbal instructions to device and gadget user install and starts using their products without frustration or wasting time",
+    pesonas: [
+      {
+        character: "Aunty Kenny",
+        userStory: 'As a busy woman, I need verbal conversational guidance to start using my new device because I neither have time nor enjoy reading'
+      }
+    ],
+    getImageSrc: () => require("../images/photo1.jpg"),
+    imageDim: { w: 4193, h: 2785 },
+  },
+
+];
