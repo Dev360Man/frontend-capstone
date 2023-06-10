@@ -5,8 +5,10 @@ My local Git branch is "master" and I want to push it to a remote origin named m
 git branch -m main
 git branch -M main
 
+git config --global init.defaultBranch main
 git config --global user.name "Dev360Man"
 git config --global user.email "dev360.career@gmail.com"
+
 
 git config user.name "Dev360Man"
 git config user.email "dev360.career@gmail.com"
