@@ -1,3 +1,40 @@
+== Config SSH for Git
+=== Local config
+. Install and Launch Git Bash: Open Git Bash.
+. Generate SSH Key Pair: In Git Bash, run the following command to generate an SSH key pair:
+.. ssh-keygen -t rsa -b 4096 -C "github_email@example.com"
+This command generates a new SSH key pair (public and private key) and saves it in the default location (~/.ssh/id_rsa).
+
+. Start SSH Agent: Run the following command to start the SSH agent:
+.. eval $(ssh-agent -s)
+. Add SSH Private Key: Add your private key to the SSH agent by running the command:
+.. ssh-add ~/.ssh/id_rsa
+
+=== Remote config
+. Copy SSH Public Key: Use the following command to copy your SSH public key to the clipboard:
+.. clip < ~/.ssh/id_rsa.pub
+. Add SSH Public Key to GitHub: Go to the GitHub website (https://github.com/) and log in to your account. Then, follow these steps:
+
+.. Click on your profile picture in the top-right corner and select "Settings."
+.. In the left sidebar, click on "SSH and GPG keys."
+.. Click on the "New SSH key" button.
+.. Give your SSH key a descriptive title.
+.. Paste the SSH public key you copied in step 6 into the "Key" field.
+.. Click "Add SSH key" to save the key on GitHub.
+
+.Test SSH Connection: To test the SSH connection to GitHub, run the following command:
+.. ssh -T git@github.com
+
+You might see a warning message asking if you want to continue connecting. Type "yes" to proceed.
+
+If the SSH connection is successful, you will receive a "Hi username! You've successfully authenticated" message.
+
+. Configure Git Username and Email: Set your Git username and email by running the following commands:
+.. git config --global user.name "Your Name"
+.. git config --global user.email "your_email@example.com"
+
+
+=== Git Commands
 git remote add origin https://github.com/Dev360Man/frontend-capstone.git
 git remote add origin git@github.com:Dev360Man/frontend-capstone.git
 
@@ -16,12 +53,27 @@ git config --global user.email "dev360.career@gmail.com"
 git config user.name "Dev360Man"
 git config user.email "dev360.career@gmail.com"
 
-// ssh-keygen -t rsa -b 4096 -C "dev360.career@gmail.com" Or :
+ssh-keygen -t rsa -b 4096 -C "dev360.career@gmail.com" Or :
 ssh-keygen -t ed25519 -C "dev360.career@gmail.com"
 
 eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_ed25519
 ssh-add C:/Users/OPEYEMI/.ssh/id_ed25519
-
+ssh-add -l -E ed25519 //Verify that you have a private key generated and loaded into SSH.
 //Testing connection
 ssh -T git@github.com
 ssh -T -p 443 git@ssh.github.com
+
+After running the following git command: "git push -u origin main", I got the error message: 
+"""
+sh: connect to host github.com port 22: Permission denied
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+"""
+What is the solution?
+
+cd C:/job/front-end-course/projects/frontend-capstone
+
+git remote set-url origin https://github.com/Dev360Man/frontend-capstone.git
