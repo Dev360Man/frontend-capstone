@@ -1,4 +1,7 @@
 git remote add origin https://github.com/Dev360Man/frontend-capstone.git
+git remote add origin git@github.com:Dev360Man/frontend-capstone.git
+
+git remote remove origin
 
 My local Git branch is "master" and I want to push it to a remote origin named main. List the Git commands to achieve that? 
 
@@ -12,3 +15,13 @@ git config --global user.email "dev360.career@gmail.com"
 
 git config user.name "Dev360Man"
 git config user.email "dev360.career@gmail.com"
+
+// ssh-keygen -t rsa -b 4096 -C "dev360.career@gmail.com" Or :
+ssh-keygen -t ed25519 -C "dev360.career@gmail.com"
+
+eval $(ssh-agent -s)
+ssh-add C:/Users/OPEYEMI/.ssh/id_ed25519
+
+//Testing connection
+ssh -T git@github.com
+ssh -T -p 443 git@ssh.github.com
